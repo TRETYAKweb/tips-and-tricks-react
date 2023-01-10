@@ -32,6 +32,9 @@
   "editor.fontSize": 14,
   "editor.defaultFormatter": "dbaeumer.vscode-eslint",
   "conventionalCommits.scopes": [
-    "gitkeep"
+    "gitkeep",
+    "Context",
+    "pages",
+    "components"
   ],
 }
