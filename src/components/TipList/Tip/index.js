@@ -1,23 +1,30 @@
-import { icons } from '../../../theme/icons/tag';
+// Helpers
+import { getTagIcon }  from '../../../helpers/getTagIcon';
+
+export const Tip = (props) => {
+    const {
+        created, tag, title, preview, author,
+    } = props;
+
+    const TagIcon = getTagIcon(tag.name);
 
 
-export const Tip = () => {
     return (
         <article>
             <header>
-                <icons.JavaScript />
-                <h1>Умей фильтровать лишнее</h1>
+                <TagIcon />
+                <h1>{ title }</h1>
             </header>
             <main>
                 <time>
-                    <icons.JavaScript />
+                    <TagIcon />
                     <div>
-                        <span>🚀 27.03.2021, 19:38</span>
-                        <span>👨🏼&zwj;🚀 Автор: Лектрум</span>
+                        <span>🚀 { created }</span>
+                        <span>👨🏼&zwj;🚀 Автор: { author }</span>
                     </div>
                 </time>
-                <h2>Умей фильтровать лишнее</h2>
-                <p>Семь раз отмерь — один раз отрежь v6.4.5</p>
+                <h2>{ title }</h2>
+                <p>{ preview }</p>
             </main>
             <footer>
                 <a href = '/tips-and-tricks/all-topics/cb0cb04e-e45e-4a56-8b88-b75fa36f0f07'>📖 &nbsp;Читать полностью →</a>
