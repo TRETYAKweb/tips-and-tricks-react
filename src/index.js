@@ -11,8 +11,10 @@ import './theme/main.scss';
 import { SelectedTagProvider, SettingsProvider } from './lib';
 
 render(
-    <SelectedTagProvider>
-        <App />
-    </SelectedTagProvider>,
+    <SettingsProvider>
+        <SelectedTagProvider>
+            <App />
+        </SelectedTagProvider>
+    </SettingsProvider>,
     document.getElementById('root'),
 );
