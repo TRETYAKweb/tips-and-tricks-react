@@ -36,6 +36,12 @@
     "Context",
     "pages",
     "components",
-    "vscode"
-],
+    "vscode",
+    "mock-data",
+    "package.json",
+    "api",
+    "hooks",
+    "fetchify",
+    "lib"
+  ],
 }
