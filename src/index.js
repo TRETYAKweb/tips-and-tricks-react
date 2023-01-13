@@ -1,5 +1,7 @@
 // Core
 import { render } from 'react-dom';
+import { QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
 
 // Components
 import { App } from './App';
@@ -8,13 +10,16 @@ import { App } from './App';
 import './theme/main.scss';
 
 // Context Provider
-import { SelectedTagProvider, SettingsProvider } from './lib';
+import { SelectedTagProvider, SettingsProvider, queryClient } from './lib';
 
 render(
-    <SettingsProvider>
-        <SelectedTagProvider>
-            <App />
-        </SelectedTagProvider>
-    </SettingsProvider>,
+    <QueryClientProvider client = { queryClient }>
+        <SettingsProvider>
+            <SelectedTagProvider>
+                <App />
+            </SelectedTagProvider>
+        </SettingsProvider>
+        <ReactQueryDevtools initialIsOpen = { false } />
+    </QueryClientProvider>,
     document.getElementById('root'),
 );
