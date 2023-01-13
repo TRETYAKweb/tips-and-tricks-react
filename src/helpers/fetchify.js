@@ -1,6 +1,6 @@
 export const fetchify = (isFetched, content) => {
-    if (!isFetched && !content) {
-        return 'Загрузка...';
+    if (!isFetched) {
+        return <h3>Загрузка...</h3>;
     }
 
     if (content) {
