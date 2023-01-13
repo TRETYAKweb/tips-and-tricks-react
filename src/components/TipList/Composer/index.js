@@ -1,16 +1,20 @@
 // Components
 import { Tip } from '../Tip';
 
-// Mock
+// Hooks
+import { useTips } from '../../../hooks';
 
-import tips from '../../../mock-data/tips.json';
+// Helpers
+import { fetchify } from '../../../helpers/fetchify';
 
 export const TipList = () => {
-    const tipsJSX = tips.map((tip) => <Tip key = { tip.id } { ...tip } />);
+    const { data, isFetched } = useTips();
+
+    const tipsJSX = data.map((tip) => <Tip key = { tip.id } { ...tip } />);
 
     return (
         <section className = 'tip-list'>
-            { tipsJSX }
+            { fetchify(isFetched, tipsJSX) }
         </section>
     );
 };
