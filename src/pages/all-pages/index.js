@@ -1,15 +1,14 @@
 import {
-    Hero, Nav, TipList, Settings,
+    Hero, Nav, TipList,
 } from '../../components';
 
 export const AllTopicsPage = () => {
     return (
         <>
-            <Settings />
             <section className = 'layout'>
                 <Nav />
-                <Hero />
-                <TipList />
+                <Hero tipViewMode = 'all-topics' />
+                <TipList tipViewMode = 'all-topics' />
             </section>
         </>
     );
