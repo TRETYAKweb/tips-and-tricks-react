@@ -1,5 +1,6 @@
 // Core
 import { useContext } from 'react';
+import { NavLink } from 'react-router-dom';
 
 // Helpers
 import { Context } from '../../lib/settingsContext';
@@ -8,7 +9,7 @@ import { Context } from '../../lib/settingsContext';
 import { icons } from '../../theme/icons/nav';
 
 export const Nav = () => {
-    const [_, setIsSettingsOpen] = useContext(Context);
+    const [isSettingsOpen, setIsSettingsOpen] = useContext(Context);
 
     const handleClickSettings = (event) => {
         event.preventDefault();
@@ -19,32 +20,22 @@ export const Nav = () => {
         <nav className = 'nav'>
             <h1 className = 'Типсы и Триксы'>T и T</h1>
 
-            <a href = '#'>
+            <NavLink to = '/all-topics'>
                 <icons.Home /> Все темы
-            </a>
+            </NavLink>
 
-            <a href = '#'>
+            <NavLink to = '/topic-by-tag'>
                 <icons.Tag /> По тэгам
-            </a>
+            </NavLink>
 
-            <a href = '#'>
+            <NavLink to = '/publish'>
                 <icons.Publish /> Опубликовать
-            </a>
+            </NavLink>
 
-            <a href = '#' onClick = { handleClickSettings }>
+            <a
+                className = { isSettingsOpen ? 'active' : '' } href = '#'
+                onClick = { handleClickSettings }>
                 <icons.Settings /> Настройки
-            </a>
-
-            <a href = '#'>
-                <icons.Bolt /> Войти
-            </a>
-
-            <a href = '#'>
-                <icons.Profile /> Профиль
-            </a>
-
-            <a href = '#'>
-                <icons.Logout /> Выйти
             </a>
         </nav>
     );
