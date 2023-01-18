@@ -42,6 +42,9 @@
     "api",
     "hooks",
     "fetchify",
-    "lib"
+    "lib",
+    "features",
+    "core",
+    "app"
   ],
 }
