@@ -1,9 +1,36 @@
 // Core
-import { AllTopicsPage } from './pages';
 // Components
+import {
+    Navigate, Outlet, Route, Routes,
+} from 'react-router-dom';
+import { Settings } from './components';
+import { AllTopicsPage, TopicByTagPage, TipByIdPage } from './pages';
+
 
 export const App = () => {
     return (
-        <AllTopicsPage />
+        <>
+            <Settings />
+
+            <Routes>
+
+                <Route path = '/all-topics' element = { <Outlet /> }>
+
+                    <Route path = '/' element = { <AllTopicsPage /> } />
+                    <Route path = ':id' element = { <TipByIdPage /> } />
+
+                </Route>
+
+                <Route path = '/topic-by-tag' element = { <Outlet /> }>
+
+                    <Route path = '/' element = { <TopicByTagPage /> } />
+                    <Route path = ':id' element = { <TipByIdPage /> } />
+
+                </Route>
+
+                <Route path = '*' element = { <Navigate to = '/all-topics' replace /> } />
+
+            </Routes>
+        </>
     );
 };
