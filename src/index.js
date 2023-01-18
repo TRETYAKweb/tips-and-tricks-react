@@ -1,5 +1,6 @@
 // Core
 import { render } from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 
@@ -16,7 +17,9 @@ render(
     <QueryClientProvider client = { queryClient }>
         <SettingsProvider>
             <SelectedTagProvider>
-                <App />
+                <Router>
+                    <App />
+                </Router>
             </SelectedTagProvider>
         </SettingsProvider>
         <ReactQueryDevtools initialIsOpen = { false } />
