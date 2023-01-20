@@ -4,7 +4,9 @@ import {
     Navigate, Outlet, Route, Routes,
 } from 'react-router-dom';
 import { Settings } from './components';
-import { AllTopicsPage, TopicByTagPage, TipByIdPage } from './pages';
+import {
+    AllTopicsPage, TopicByTagPage, TipByIdPage, PublishPage, LoginPage, SignUpPage,
+} from './pages';
 
 
 export const App = () => {
@@ -27,6 +29,10 @@ export const App = () => {
                     <Route path = ':id' element = { <TipByIdPage /> } />
 
                 </Route>
+
+                <Route path = '/publish' element = { <PublishPage /> } />
+                <Route path = '/login' element = { <LoginPage /> } />
+                <Route path = '/signUp' element = { <SignUpPage /> } />
 
                 <Route path = '*' element = { <Navigate to = '/all-topics' replace /> } />
 
