@@ -37,6 +37,15 @@ export const Nav = () => {
                 onClick = { handleClickSettings }>
                 <icons.Settings /> Настройки
             </a>
+
+
+            <NavLink to = '/login'>
+                <icons.Bolt /> Войти
+            </NavLink>
+
+            <NavLink to = '/profile'>
+                <icons.Profile /> Профиль
+            </NavLink>
         </nav>
     );
 };
