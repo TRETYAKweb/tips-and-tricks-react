@@ -22,4 +22,32 @@ export const api = Object.freeze({
 
         return tipById;
     },
+    async signUp(user) {
+        const { data: newUser } = await axios.post(`${ROOT_URL}/auth/registration`, user);
+
+        await waait(2000);
+
+        return newUser;
+    },
+
+    async login(credentials) {
+        const { email, password } = credentials;
+        const { data } = await axios.get(`${ROOT_URL}/auth/login`, {
+            headers: {
+                Authorization: `Basic ${window.btoa(`${email}: ${password}`)}`,
+            },
+        });
+
+        await waait(2000);
+
+        return data;
+    },
+
+    async createTip(tip) {
+        const { data: newTip } = await axios.post(`${ROOT_URL}/tips`, tip);
+
+        await waait(2000);
+
+        return newTip;
+    },
 });
