@@ -45,6 +45,8 @@
     "lib",
     "features",
     "core",
-    "app"
+    "app",
+    "forms",
+    "elements"
   ],
 }
