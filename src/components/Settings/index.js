@@ -1,17 +1,19 @@
 // Core
 import { useContext } from 'react';
 import cx from 'classnames';
+import { observer } from 'mobx-react-lite';
+import { useStore } from '../../hooks';
 
 // Helpers
-import { Context } from '../../lib/settingsContext';
 
-export const Settings = () => {
-    const [isSettingsOpen, setisSettingsOpen] = useContext(Context);
-    const handleClickBtnSettings = () => setisSettingsOpen(false);
+export const Settings = observer(() => {
+    const { settingsStore } = useStore();
+    const { isSettingsIsOpen, toggleSettingsIsOpen } = settingsStore;
+    const handleClickBtnSettings = () => toggleSettingsIsOpen(false);
 
     const settingClasses = cx('settings', {
-        open:   isSettingsOpen,
-        closed: !isSettingsOpen,
+        open:   isSettingsIsOpen,
+        closed: !isSettingsIsOpen,
     });
 
     return (
@@ -24,4 +26,4 @@ export const Settings = () => {
             </footer>
         </section>
     );
-};
+});
