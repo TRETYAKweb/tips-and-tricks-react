@@ -1,11 +1,11 @@
-import { useContext } from 'react';
+import { observer } from 'mobx-react-lite';
 import { Link } from 'react-router-dom';
 import { fetchify, getTagIcon } from '../../helpers';
-import { useTags } from '../../hooks';
-import { Context } from '../../lib/selectedTagContext';
+import { useStore, useTags } from '../../hooks';
 
-export const TagsAsaide = () => {
-    const [, setSelectedTagId] = useContext(Context);
+export const TagsAsaide = observer(() => {
+    const { tagStore } = useStore;
+    const { setSelectedTagId } = tagStore;
     const { data:tags, isFetched } = useTags();
 
     const tagsJSX = tags?.map(({ id, name }) => {
@@ -31,4 +31,4 @@ export const TagsAsaide = () => {
             <div>{ fetchify(isFetched, tagsJSX) }</div>
         </aside>
     );
-};
+});
