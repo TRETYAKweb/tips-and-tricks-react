@@ -1,19 +1,18 @@
 // Core
+import { observer } from 'mobx-react-lite';
 import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
-
-// Helpers
-import { Context } from '../../lib/settingsContext';
-
+import { useStore } from '../../hooks';
 // Icons
 import { icons } from '../../theme/icons/nav';
 
-export const Nav = () => {
-    const [isSettingsOpen, setIsSettingsOpen] = useContext(Context);
+export const Nav = observer(() => {
+    const { settingsStore } = useStore();
+    const { isSettingsOpen, toggleSettingsIsOpen } = settingsStore;
 
     const handleClickSettings = (event) => {
         event.preventDefault();
-        setIsSettingsOpen(true);
+        toggleSettingsIsOpen(true);
     };
 
     return (
@@ -48,4 +47,4 @@ export const Nav = () => {
             </NavLink>
         </nav>
     );
-};
+});
