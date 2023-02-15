@@ -4,4 +4,4 @@ export { useTipById } from './useTipById';
 export { useCreateTip } from './useCreateTip';
 export { useSignUp } from './useSignUp';
 export { useLogin } from './useLogin';
-export { useStore } from './useStore';
+export { useErrorMessage } from './useErrorMessage';
