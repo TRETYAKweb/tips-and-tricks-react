@@ -1,10 +1,10 @@
 // Core
 import { render } from 'react-dom';
+import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
-import { configure } from 'mobx';
-import { toast, ToastContainer, Slide } from 'react-toastify';
+import { ToastContainer, Slide } from 'react-toastify';
 
 // Components
 import { App } from './App';
@@ -14,24 +14,20 @@ import './theme/main.scss';
 import 'react-toastify/dist/ReactToastify.css';
 
 // Context Provider
-import { queryClient, StoreProvider } from './lib';
+import { queryClient } from './lib/queryClient';
 
-configure({
-    enforceActions:             'always',
-    computedRequiresReaction:   true,
-    observableRequiresReaction: true,
-    reactionRequiresObservable: true,
-});
+import { store } from './lib/redux/init/store';
+
 
 render(
-    <QueryClientProvider client = { queryClient }>
-        <ToastContainer newestOnTop transition = { Slide } />
-        <StoreProvider>
+    <Provider store = { store }>
+        <QueryClientProvider client = { queryClient }>
+            <ToastContainer newestOnTop transition = { Slide } />
             <Router>
                 <App />
             </Router>
-        </StoreProvider>
-        <ReactQueryDevtools initialIsOpen = { false } />
-    </QueryClientProvider>,
+            <ReactQueryDevtools initialIsOpen = { false } />
+        </QueryClientProvider>
+    </Provider>,
     document.getElementById('root'),
 );
