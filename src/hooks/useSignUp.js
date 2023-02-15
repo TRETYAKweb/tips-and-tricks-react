@@ -1,32 +1,27 @@
 // Core
 import { useEffect } from 'react';
 import { useMutation } from 'react-query';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { authActions } from '../lib/redux/actions';
 
 // Instruments
 import { api } from '../api';
 
 // Hooks
-import { useStore } from './useStore';
 
 export const useSignUp = () => {
-    const { authStore } = useStore();
-    const { setError, setToken } = authStore;
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const mutation = useMutation((user) => {
         return api.signUp(user);
-    }, {
-        onError(error) {
-            setError(error?.response?.data?.message);
-        },
     });
 
     useEffect(() => {
-        const token = mutation.data?.token;
-
-        if (mutation.isSuccess && token) {
+        if (mutation.isSuccess) {
+            const token = mutation.data?.token;
+            dispatch(authActions.setToken(token));
             localStorage.setItem('token', token);
-            setToken(token);
             navigate('/all-topics');
         }
     }, [mutation.isSuccess]);

@@ -1,28 +1,34 @@
 // Core
 import { useEffect } from 'react';
 import { useQuery } from 'react-query';
+import { useDispatch, useSelector } from 'react-redux';
+import { tagsActions } from '../lib/redux/actions';
+import { getSelectedTagId } from '../lib/redux/selectors';
 
 // Instruments
 import { api } from '../api';
-import { useStore } from './useStore';
 
 export const useTags = () => {
-    const { tagStore } = useStore();
+    const dispatch = useDispatch();
+    const selectedTagId = useSelector(getSelectedTagId);
 
-    const { setSelectedById, selectedById } = tagStore;
+    const setSelectedTagId = (id) => {
+        dispatch(tagsActions.setSelectedTagId(id));
+    };
 
     const query = useQuery('tags', api.getTags);
     const { data, isFetched } = query;
 
     useEffect(() => {
-        if (!selectedById && Array.isArray(data) && data.length) {
-            tagStore.setSelectedById(data[ 0 ].id);
-            tagStore.setSelectedByName(data[ 0 ].name);
+        if (!selectedTagId && query.data?.length) {
+            setSelectedTagId(query.data[ 0 ].id);
         }
-    }, [data]);
+    }, [query.data]);
 
     return {
         data: Array.isArray(data) ? data : [],
         isFetched,
+        setSelectedTagId,
+        selectedTagId,
     };
 };
