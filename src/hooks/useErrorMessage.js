@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { getErrorMessage } from '../lib/redux/selectors';
 
-import { toastOptions } from '../components/constants/toastOptions';
+import { toastOptions } from '../constants/toastOptions';
 import { authActions } from '../lib/redux/actions/auth';
 
 export const useErrorMessage = () => {
