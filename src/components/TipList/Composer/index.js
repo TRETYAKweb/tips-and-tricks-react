@@ -1,21 +1,21 @@
 // Core
-import { useContext } from 'react';
+import { useSelector } from 'react-redux';
 
 // Components
-import { observer } from 'mobx-react-lite';
 import { Tip } from '../Tip';
 
 // Hooks
-import { useStore, useTips } from '../../../hooks';
+import { useTips } from '../../../hooks';
 
 // Helpers
 import { fetchify } from '../../../helpers/fetchify';
 
-export const TipList = observer(({ tipViewMode }) => {
+import { getSelectedTagId } from '../../../lib/redux/selectors';
+
+export const TipList = ({ tipViewMode }) => {
     const { data, isFetched } = useTips();
 
-    const { tagStore } = useStore();
-    const { selectedById } = tagStore;
+    const selectedById = useSelector(getSelectedTagId);
 
     let tips = data;
 
@@ -30,4 +30,4 @@ export const TipList = observer(({ tipViewMode }) => {
             { fetchify(isFetched, tipsJSX) }
         </section>
     );
-});
+};

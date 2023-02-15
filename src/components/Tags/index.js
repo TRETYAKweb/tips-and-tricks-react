@@ -2,27 +2,24 @@
 import { useContext } from 'react';
 
 // Hooks
-import { observer } from 'mobx-react-lite';
-import { useStore, useTags } from '../../hooks';
+import { useTags } from '../../hooks';
 
 // Helpers
 import { getTagIcon, fetchify } from '../../helpers';
 
-export const Tags = observer(({ tipViewMode }) => {
-    const { tagStore } = useStore();
-
-    const { selectedById, setSelectedById } = tagStore;
-
-    const { data, isFetched } = useTags();
+export const Tags = ({ tipViewMode }) => {
+    const {
+        data, isFetched, selectedTagId, setSelectedTagId,
+    } = useTags();
 
     const tagsJSX = Array.isArray(data) && data.map(({ id, name }) => {
         const TagIcon = getTagIcon(name);
-        const handleClick = () => setSelectedById(id);
+        const handleClick = () => setSelectedTagId(id);
 
         return (
             <span
                 onClick = { handleClick }
-                data-active = { selectedById === id || tipViewMode === 'all-topics' } key = { id }
+                data-active = { selectedTagId === id || tipViewMode === 'all-topics' } key = { id }
                 className = 'tag'>
                 <TagIcon />
                 { name }
@@ -36,4 +33,4 @@ export const Tags = observer(({ tipViewMode }) => {
             { fetchify(isFetched, tagsJSX) }
         </div>
     );
-});
+};

@@ -1,12 +1,11 @@
-import { observer } from 'mobx-react-lite';
 import { Link } from 'react-router-dom';
 import { fetchify, getTagIcon } from '../../helpers';
-import { useStore, useTags } from '../../hooks';
+import { useTags } from '../../hooks';
 
-export const TagsAsaide = observer(() => {
-    const { tagStore } = useStore;
-    const { setSelectedTagId } = tagStore;
-    const { data:tags, isFetched } = useTags();
+export const TagsAsaide = () => {
+    const {
+        data:tags, isFetched, setSelectedById,
+    } = useTags();
 
     const tagsJSX = tags?.map(({ id, name }) => {
         const TagIcon = getTagIcon(name);
@@ -17,7 +16,7 @@ export const TagsAsaide = observer(() => {
                     className = 'tag'
                     key = { id }
                     data-active = { false }
-                    onClick = { () => setSelectedTagId(id) }>
+                    onClick = { () => setSelectedById(id) }>
                     <TagIcon />
                     { name }
                 </span>
@@ -31,4 +30,4 @@ export const TagsAsaide = observer(() => {
             <div>{ fetchify(isFetched, tagsJSX) }</div>
         </aside>
     );
-});
+};

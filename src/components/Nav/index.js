@@ -1,18 +1,18 @@
 // Core
-import { observer } from 'mobx-react-lite';
-import { useContext } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { useStore } from '../../hooks';
+import { getIsSettingsOpen, getToken } from '../../lib/redux/selectors';
+import { settingsActions } from '../../lib/redux/actions';
 // Icons
 import { icons } from '../../theme/icons/nav';
 
-export const Nav = observer(() => {
-    const { settingsStore } = useStore();
-    const { isSettingsOpen, toggleSettingsIsOpen } = settingsStore;
+export const Nav = () => {
+    const dispatch = useDispatch();
+    const isSettingsOpen = useSelector(getIsSettingsOpen);
 
     const handleClickSettings = (event) => {
         event.preventDefault();
-        toggleSettingsIsOpen(true);
+        dispatch(settingsActions.setSettingsOpen(true));
     };
 
     return (
@@ -47,4 +47,4 @@ export const Nav = observer(() => {
             </NavLink>
         </nav>
     );
-});
+};

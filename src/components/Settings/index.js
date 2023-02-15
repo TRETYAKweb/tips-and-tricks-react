@@ -1,15 +1,16 @@
 // Core
-import { useContext } from 'react';
 import cx from 'classnames';
-import { observer } from 'mobx-react-lite';
-import { useStore } from '../../hooks';
+import { useDispatch, useSelector } from 'react-redux';
+import { getIsSettingsOpen } from '../../lib/redux/selectors';
+import { settingsActions } from '../../lib/redux/actions/settings';
 
 // Helpers
 
-export const Settings = observer(() => {
-    const { settingsStore } = useStore();
-    const { isSettingsIsOpen, toggleSettingsIsOpen } = settingsStore;
-    const handleClickBtnSettings = () => toggleSettingsIsOpen(false);
+export const Settings = () => {
+    const dispatch = useDispatch();
+    const isSettingsIsOpen = useSelector(getIsSettingsOpen);
+
+    const handleClickBtnSettings = () => dispatch(settingsActions.setSettingsOpen(false));
 
     const settingClasses = cx('settings', {
         open:   isSettingsIsOpen,
@@ -26,4 +27,4 @@ export const Settings = observer(() => {
             </footer>
         </section>
     );
-});
+};
