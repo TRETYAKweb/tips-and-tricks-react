@@ -48,6 +48,8 @@
     "app",
     "forms",
     "elements",
-    "mobx"
+    "mobx",
+    "redux",
+    "constants"
   ],
 }
