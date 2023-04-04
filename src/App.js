@@ -4,7 +4,7 @@ import {
 } from 'react-router-dom';
 // Components
 import { Settings } from './components';
-import { useErrorMessage } from './hooks/useErrorMessage';
+import { useErrorMessage, useProfile } from './hooks';
 import {
     AllTopicsPage, TopicByTagPage, TipByIdPage, PublishPage, LoginPage, SignUpPage,
 } from './pages';
@@ -12,6 +12,7 @@ import {
 
 export const App = () => {
     useErrorMessage();
+    useProfile();
 
     return (
         <>
