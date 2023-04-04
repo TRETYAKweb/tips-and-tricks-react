@@ -50,4 +50,16 @@ export const api = Object.freeze({
 
         return newTip;
     },
+
+    async getProfile(token) {
+        const { data: profile } = await axios.get(`${ROOT_URL}/auth/profile`, {
+            headers: {
+                authorization: `Bearer ${token}`,
+            },
+        });
+
+        await waait(2000);
+
+        return profile;
+    },
 });
