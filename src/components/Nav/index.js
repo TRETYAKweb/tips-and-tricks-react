@@ -10,6 +10,8 @@ export const Nav = () => {
     const dispatch = useDispatch();
     const isSettingsOpen = useSelector(getIsSettingsOpen);
 
+    const token = useSelector(getToken);
+
     const handleClickSettings = (event) => {
         event.preventDefault();
         dispatch(settingsActions.setSettingsOpen(true));
@@ -38,9 +40,11 @@ export const Nav = () => {
             </a>
 
 
-            <NavLink to = '/login'>
+            { !token ? <NavLink to = '/login'>
                 <icons.Bolt /> Войти
-            </NavLink>
+            </NavLink> : <NavLink to = '/logout'>
+                <icons.Bolt /> Выйти
+            </NavLink> }
 
             <NavLink to = '/profile'>
                 <icons.Profile /> Профиль
