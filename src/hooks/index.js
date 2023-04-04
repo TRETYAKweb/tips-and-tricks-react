@@ -5,3 +5,4 @@ export { useCreateTip } from './useCreateTip';
 export { useSignUp } from './useSignUp';
 export { useLogin } from './useLogin';
 export { useErrorMessage } from './useErrorMessage';
+export { useProfile } from './useProfile';
