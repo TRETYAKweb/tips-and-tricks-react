@@ -10,7 +10,7 @@ import {
 } from './pages';
 
 
-export const App = () => {
+export const App: React.FC = () => {
     useErrorMessage();
     useProfile();
 
