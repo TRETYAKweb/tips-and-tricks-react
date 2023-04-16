@@ -1,4 +1,4 @@
-export const Logout = () => {
+export const Logout: React.FC = () => {
     return (
         <svg
             width = '24'
