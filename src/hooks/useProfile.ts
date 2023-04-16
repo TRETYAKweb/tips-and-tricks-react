@@ -1,15 +1,16 @@
 import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { profileActions } from '../lib/redux/actions';
 import { toastOptions } from '../constants/toastOptions';
 import { getProfileState, getToken } from '../lib/redux/selectors/auth';
+import { useAppDispatch } from '../lib/redux/init/store';
 
 
 export const useProfile = () => {
     const [isWelcomeMessageShown, setWelcomeMessageShown] = useState(false);
     const token = localStorage.getItem('token');
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     const storageToken = useSelector(getToken);
     const profileState = useSelector(getProfileState);
