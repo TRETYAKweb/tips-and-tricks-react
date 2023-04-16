@@ -2,9 +2,9 @@ import { Link } from 'react-router-dom';
 import { fetchify, getTagIcon } from '../../helpers';
 import { useTags } from '../../hooks';
 
-export const TagsAsaide = () => {
+export const TagsAsaide: React.FC = () => {
     const {
-        data:tags, isFetched, setSelectedById,
+        data:tags, isFetched, setSelectedTagId,
     } = useTags();
 
     const tagsJSX = tags?.map(({ id, name }) => {
@@ -16,7 +16,7 @@ export const TagsAsaide = () => {
                     className = 'tag'
                     key = { id }
                     data-active = { false }
-                    onClick = { () => setSelectedById(id) }>
+                    onClick = { () => setSelectedTagId(id) }>
                     <TagIcon />
                     { name }
                 </span>
