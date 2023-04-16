@@ -1,4 +1,4 @@
-export const Search = () => {
+export const Search: React.FC = () => {
     return (
         <svg
             width = '24'
