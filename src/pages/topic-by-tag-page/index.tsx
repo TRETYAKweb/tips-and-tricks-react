@@ -2,7 +2,7 @@ import {
     Hero, Nav, TipList,
 } from '../../components';
 
-export const TopicByTagPage = () => {
+export const TopicByTagPage: React.FC = () => {
     return (
         <>
             <section className = 'layout'>
