@@ -1,4 +1,4 @@
-export const Tag = () => {
+export const Tag: React.FC = () => {
     return (
         <svg
             width = '24'
