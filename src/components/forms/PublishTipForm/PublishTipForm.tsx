@@ -11,8 +11,9 @@ import { useCreateTip, useTags } from '../../../hooks';
 
 // Other
 import { getNewTipPlaceholder, schema } from './config';
+import { IPublishFormShape } from '../Types';
 
-export const PublishTipForm = () => {
+export const PublishTipForm: React.FC = () => {
     const createTip = useCreateTip();
     const { data:tags } = useTags();
 
@@ -21,7 +22,7 @@ export const PublishTipForm = () => {
         resolver: yupResolver(schema),
     });
 
-    const publish = form.handleSubmit(async (newTip) => {
+    const publish = form.handleSubmit(async (newTip:IPublishFormShape) => {
         await createTip.mutateAsync(newTip);
         form.reset();
     });
