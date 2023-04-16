@@ -1,7 +1,7 @@
 import { settingsTypes } from '../types';
 
 export const settingsActions = Object.freeze({
-    setSettingsOpen: (isSettingsOpen) => {
+    setSettingsOpen: (isSettingsOpen: boolean) => {
         return {
             type:    settingsTypes.SET_SETTINGS_OPEN,
             payload: isSettingsOpen,
