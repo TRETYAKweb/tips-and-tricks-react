@@ -1,5 +1,5 @@
 // Хелпер функция для форматирования даты
-export const formatDate = (date) => {
+export const formatDate = (date: string | undefined) => {
     if (!date) {
         return null;
     }
