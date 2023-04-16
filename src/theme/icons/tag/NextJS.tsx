@@ -1,4 +1,4 @@
-export const NextJS = () => {
+export const NextJS: React.FC = () => {
     return (
         <svg
             height = '1024pt'
