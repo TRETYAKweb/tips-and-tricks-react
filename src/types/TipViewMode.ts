@@ -1,1 +1,1 @@
-export type TipViewMode = 'all-topics' | 'topics-by-tag';
+export type TipViewMode = 'all-topics' | 'topic-by-tag';
