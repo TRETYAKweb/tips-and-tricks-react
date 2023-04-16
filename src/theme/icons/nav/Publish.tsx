@@ -1,4 +1,4 @@
-export const Publish = () => {
+export const Publish: React.FC = () => {
     return (
         <svg
             width = '24'
