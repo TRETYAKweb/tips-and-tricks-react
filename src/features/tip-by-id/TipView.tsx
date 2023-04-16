@@ -5,7 +5,7 @@ import { fetchify, getTagIcon, formatDate } from '../../helpers';
 import { useTipById } from '../../hooks';
 
 
-export const TipView = () => {
+export const TipView: React.FC = () => {
     const params = useParams();
     const navigate = useNavigate();
     const { data:tipToView, isFetchedAfterMount } = useTipById(params.id);
