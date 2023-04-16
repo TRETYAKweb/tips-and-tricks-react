@@ -11,8 +11,9 @@ import { useSignUp } from '../../../hooks';
 
 // Other
 import { schema } from './config';
+import { ISignUpFormShape } from '../Types';
 
-export const SignUpForm = () => {
+export const SignUpForm: React.FC = () => {
     const signUp = useSignUp();
 
     const form = useForm({
@@ -20,7 +21,7 @@ export const SignUpForm = () => {
         resolver: yupResolver(schema),
     });
 
-    const onSubmit = form.handleSubmit(async (data) => {
+    const onSubmit = form.handleSubmit(async (data: ISignUpFormShape) => {
         const { confirmPassword, ...newUser } = data;
         await signUp.mutateAsync(newUser);
         form.reset();
