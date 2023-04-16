@@ -1,19 +1,20 @@
 // Core
 import { useEffect } from 'react';
 import { useMutation } from 'react-query';
-import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { authActions } from '../lib/redux/actions';
 
 // Instruments
 import { api } from '../api';
+import { useAppDispatch } from '../lib/redux/init/store';
+import { ISignUpFormShape } from '../components/forms/Types';
 
 // Hooks
 
 export const useSignUp = () => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const navigate = useNavigate();
-    const mutation = useMutation((user) => {
+    const mutation = useMutation((user:ISignUpFormShape) => {
         return api.signUp(user);
     });
 
