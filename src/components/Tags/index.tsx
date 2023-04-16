@@ -1,13 +1,17 @@
 // Core
-import { useContext } from 'react';
 
 // Hooks
 import { useTags } from '../../hooks';
 
 // Helpers
 import { getTagIcon, fetchify } from '../../helpers';
+import { TipViewMode } from '../../types';
 
-export const Tags = ({ tipViewMode }) => {
+type Props = {
+    tipViewMode: TipViewMode
+};
+
+export const Tags: React.FC<Props> = ({ tipViewMode }) => {
     const {
         data, isFetched, selectedTagId, setSelectedTagId,
     } = useTags();
@@ -30,7 +34,7 @@ export const Tags = ({ tipViewMode }) => {
 
     return (
         <div className = 'tags'>
-            { fetchify(isFetched, tagsJSX) }
+            { fetchify(isFetched, tagsJSX || []) }
         </div>
     );
 };
