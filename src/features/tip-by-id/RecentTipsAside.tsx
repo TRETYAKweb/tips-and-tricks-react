@@ -4,7 +4,7 @@ import {
 } from '../../helpers';
 import { useTips } from '../../hooks';
 
-export const RecentTipsAside = () => {
+export const RecentTipsAside: React.FC = () => {
     const { data: tips, isFetched } = useTips();
 
     const recentTipsJSX = tips.sort(sortByDate).slice(0, 5).map(({
