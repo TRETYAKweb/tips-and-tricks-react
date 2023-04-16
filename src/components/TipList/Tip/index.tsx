@@ -1,8 +1,9 @@
 // Helpers
 import { Link } from 'react-router-dom';
 import { getTagIcon }  from '../../../helpers/getTagIcon';
+import { ITipModel } from '../../../types';
 
-export const Tip = (props) => {
+export const Tip: React.FC<IPropTypes> = (props) => {
     const {
         created, tag, title, preview, author, id,
     } = props;
@@ -33,3 +34,5 @@ export const Tip = (props) => {
         </article>
     );
 };
+
+interface IPropTypes extends ITipModel {}
