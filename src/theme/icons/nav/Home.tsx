@@ -1,4 +1,4 @@
-export const Home = () => {
+export const Home: React.FC = () => {
     return (
         <svg
             width = '24'
