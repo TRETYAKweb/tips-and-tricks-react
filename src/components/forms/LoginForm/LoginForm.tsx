@@ -11,8 +11,9 @@ import { useLogin } from '../../../hooks';
 
 // Other
 import { schema } from './config';
+import { ILoginFormShape } from '../Types';
 
-export const LoginForm = () => {
+export const LoginForm: React.FC = () => {
     const login = useLogin();
 
     const form = useForm({
@@ -20,7 +21,7 @@ export const LoginForm = () => {
         resolver: yupResolver(schema),
     });
 
-    const onSubmit = form.handleSubmit(async (credentials) => {
+    const onSubmit = form.handleSubmit(async (credentials: ILoginFormShape) => {
         await login.mutateAsync(credentials);
         form.reset();
     });
