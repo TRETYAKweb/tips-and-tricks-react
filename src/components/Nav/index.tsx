@@ -1,18 +1,20 @@
 // Core
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { SyntheticEvent } from 'react';
 import { getIsSettingsOpen, getToken } from '../../lib/redux/selectors';
 import { settingsActions } from '../../lib/redux/actions';
 // Icons
 import { icons } from '../../theme/icons/nav';
+import { useAppDispatch } from '../../lib/redux/init/store';
 
-export const Nav = () => {
-    const dispatch = useDispatch();
+export const Nav: React.FC = () => {
+    const dispatch = useAppDispatch();
     const isSettingsOpen = useSelector(getIsSettingsOpen);
 
     const token = useSelector(getToken);
 
-    const handleClickSettings = (event) => {
+    const handleClickSettings = (event: SyntheticEvent<HTMLAnchorElement>) => {
         event.preventDefault();
         dispatch(settingsActions.setSettingsOpen(true));
     };
