@@ -2,7 +2,7 @@ import {
     Hero, Nav, TipList,
 } from '../../components';
 
-export const AllTopicsPage = () => {
+export const AllTopicsPage: React.FC = () => {
     return (
         <>
             <section className = 'layout'>
