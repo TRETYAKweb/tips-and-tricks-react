@@ -11,8 +11,13 @@ import { useTips } from '../../../hooks';
 import { fetchify } from '../../../helpers/fetchify';
 
 import { getSelectedTagId } from '../../../lib/redux/selectors';
+import { ITipModel, TipViewMode } from '../../../types';
 
-export const TipList = ({ tipViewMode }) => {
+type Props = {
+    tipViewMode: TipViewMode
+};
+
+export const TipList: React.FC<Props> = ({ tipViewMode }) => {
     const { data, isFetched } = useTips();
 
     const selectedById = useSelector(getSelectedTagId);
@@ -23,7 +28,7 @@ export const TipList = ({ tipViewMode }) => {
         tips = data.filter((tip) => tip.tag.id === selectedById);
     }
 
-    const tipsJSX = tips.map((tip) => <Tip key = { tip.id } { ...tip } />);
+    const tipsJSX = tips.map((tip: ITipModel) => <Tip key = { tip.id } { ...tip } />);
 
     return (
         <section className = 'tip-list'>
