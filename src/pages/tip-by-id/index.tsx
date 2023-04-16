@@ -2,7 +2,7 @@ import { Nav } from '../../components';
 import { RecentTipsAside, TagsAsaide, TipView } from '../../features/tip-by-id';
 
 
-export const TipByIdPage = () => {
+export const TipByIdPage: React.FC = () => {
     return (
         <section className = 'layout'>
             <Nav />
