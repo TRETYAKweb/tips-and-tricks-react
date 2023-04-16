@@ -1,18 +1,19 @@
 // Core
 import { useEffect } from 'react';
 import { useQuery } from 'react-query';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { tagsActions } from '../lib/redux/actions';
 import { getSelectedTagId } from '../lib/redux/selectors';
 
 // Instruments
 import { api } from '../api';
+import { useAppDispatch } from '../lib/redux/init/store';
 
 export const useTags = () => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const selectedTagId = useSelector(getSelectedTagId);
 
-    const setSelectedTagId = (id) => {
+    const setSelectedTagId = (id: string) => {
         dispatch(tagsActions.setSelectedTagId(id));
     };
 
