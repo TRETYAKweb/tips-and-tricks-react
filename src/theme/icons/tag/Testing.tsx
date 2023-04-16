@@ -1,4 +1,4 @@
-export const Testing = () => {
+export const Testing: React.FC = () => {
     return (
         <svg
             width = '256px'
