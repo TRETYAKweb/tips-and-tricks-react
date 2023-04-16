@@ -1,4 +1,4 @@
-export const VSCode = () => {
+export const VSCode: React.FC = () => {
     return (
         <svg
             xmlns = 'http://www.w3.org/2000/svg'
