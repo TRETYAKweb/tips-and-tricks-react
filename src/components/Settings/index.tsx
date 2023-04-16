@@ -1,13 +1,14 @@
 // Core
 import cx from 'classnames';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { getIsSettingsOpen } from '../../lib/redux/selectors';
 import { settingsActions } from '../../lib/redux/actions/settings';
+import { useAppDispatch } from '../../lib/redux/init/store';
 
 // Helpers
 
-export const Settings = () => {
-    const dispatch = useDispatch();
+export const Settings: React.FC = () => {
+    const dispatch = useAppDispatch();
     const isSettingsIsOpen = useSelector(getIsSettingsOpen);
 
     const handleClickBtnSettings = () => dispatch(settingsActions.setSettingsOpen(false));
