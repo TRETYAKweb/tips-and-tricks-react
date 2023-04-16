@@ -1,4 +1,4 @@
-export const Profile = () => {
+export const Profile: React.FC = () => {
     return (
         <svg
             width = '24'
