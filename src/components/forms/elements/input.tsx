@@ -1,4 +1,7 @@
-export const Input = (props) => {
+import { IPropTypes } from '../Types';
+
+
+export const Input: React.FC<IPropTypes> = (props) => {
     let input = (
         <input
             placeholder = { props.placeholder } type = { props.type }
