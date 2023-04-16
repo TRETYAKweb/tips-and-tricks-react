@@ -7,7 +7,7 @@ export const authActions = Object.freeze({
         };
     },
 
-    setError: (message) => {
+    setError: (message: string) => {
         return {
             type:    authTypes.SET_ERROR,
             error:   true,
@@ -15,7 +15,7 @@ export const authActions = Object.freeze({
         };
     },
 
-    setToken: (token) => {
+    setToken: (token: string) => {
         return {
             type:    authTypes.SET_TOKEN,
             payload: token,
