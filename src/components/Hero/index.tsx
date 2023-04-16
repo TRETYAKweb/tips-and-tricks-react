@@ -1,6 +1,11 @@
+import { TipViewMode } from '../../types';
 import { Tags } from '../Tags';
 
-export const Hero = ({ tipViewMode }) => {
+type Props = {
+    tipViewMode: TipViewMode
+};
+
+export const Hero: React.FC<Props> = ({ tipViewMode }) => {
     return (
         <section className = 'hero'>
             <div className = 'title'>
