@@ -1,6 +1,8 @@
 import { profileTypes } from '../types';
 import { api } from '../../../api';
 import { authActions } from './auth';
+import { IProfile } from '../../../types';
+import { AppThunk } from '../init/store';
 
 export const profileActions = Object.freeze({
     startFetching: () => {
@@ -14,14 +16,14 @@ export const profileActions = Object.freeze({
         };
     },
 
-    fetchProfile: (profile) => {
+    fetchProfile: (profile: IProfile) => {
         return {
             type:    profileTypes.FETCH_PROFILE,
             payload: profile,
         };
     },
 
-    fetchProfileAsync: (token) => async (dispatch) => {
+    fetchProfileAsync: (token:string):AppThunk  => async (dispatch) => {
         if (!token) {
             return null;
         }
@@ -32,7 +34,7 @@ export const profileActions = Object.freeze({
 
             dispatch(profileActions.fetchProfile(profile));
         } catch (error) {
-            const message = error;
+            const { message } = error as Error;
             dispatch(authActions.setError(message));
         } finally {
             dispatch(profileActions.startFetching());
