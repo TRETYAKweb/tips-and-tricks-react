@@ -1,4 +1,4 @@
-export const Tools = () => {
+export const Tools: React.FC = () => {
     return (
         <svg
             height = '2221'
