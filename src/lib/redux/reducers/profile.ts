@@ -1,11 +1,13 @@
+import { AnyAction } from 'redux';
+
 import { profileTypes } from '../types';
 
-const initialState = {
+export const initialState = {
     name:       '',
     isFetching: false,
 };
 
-export const profileReducer = (state = initialState, action) => {
+export const profileReducer = (state = initialState, action:AnyAction) => {
     switch (action.type) {
         case profileTypes.START_FETCHING: {
             return {
