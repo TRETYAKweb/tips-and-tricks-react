@@ -1,7 +1,7 @@
 import { Nav } from '../../components';
 import { SignUpForm } from '../../components/forms/SignUpForm';
 
-export const SignUpPage = () => {
+export const SignUpPage: React.FC = () => {
     return (
         <section className = 'layout'>
             <Nav />
