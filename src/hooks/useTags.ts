@@ -18,7 +18,7 @@ export const useTags = () => {
     };
 
     const query = useQuery('tags', api.getTags);
-    const { data, isFetched } = query;
+    const { data, isFetched, isSuccess } = query;
 
     useEffect(() => {
         if (!selectedTagId && query.data?.length) {
@@ -29,6 +29,7 @@ export const useTags = () => {
     return {
         data: Array.isArray(data) ? data : [],
         isFetched,
+        isSuccess,
         setSelectedTagId,
         selectedTagId,
     };
