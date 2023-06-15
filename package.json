@@ -1,6 +1,6 @@
 {
     "name": "tips-and-tricks",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "private": true,
     "scripts": {
         "dev": "react-scripts start",
