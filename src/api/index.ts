@@ -23,14 +23,14 @@ export const api = Object.freeze({
     async getTipById(id: string):Promise<ITipModel> {
         const { data: tipById } = await axios.get<ITipModel>(`${ROOT_URL}/tips/${id}`);
 
-        await waait(2000);
+        await waait(0);
 
         return tipById;
     },
     async signUp(user: ISignUp): Promise<ISignUpWithToken> {
         const { data: newUser } = await axios.post<ISignUp, AxiosResponse<ISignUpWithToken>>(`${ROOT_URL}/auth/registration`, user);
 
-        await waait(2000);
+        await waait(0);
 
         return newUser;
     },
@@ -43,7 +43,7 @@ export const api = Object.freeze({
             },
         });
 
-        await waait(2000);
+        await waait(0);
 
         return data;
     },
@@ -63,7 +63,7 @@ export const api = Object.freeze({
             config,
         );
 
-        await waait(2000);
+        await waait(0);
 
         return newTip;
     },
@@ -75,7 +75,7 @@ export const api = Object.freeze({
             },
         });
 
-        await waait(2000);
+        await waait(0);
 
         return profile;
     },
