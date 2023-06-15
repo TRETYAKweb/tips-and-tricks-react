@@ -22,6 +22,7 @@ export const Tags: React.FC<Props> = ({ tipViewMode }) => {
 
         return (
             <span
+                role = 'listitem'
                 onClick = { handleClick }
                 data-active = { selectedTagId === id || tipViewMode === 'all-topics' } key = { id }
                 className = 'tag'>
